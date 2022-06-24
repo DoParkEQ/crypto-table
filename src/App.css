@@ -23,7 +23,7 @@ body {
   padding: 8px 16px;
   color: #000;
   background-color: #80bcf0;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .price-history__alert {
@@ -52,7 +52,7 @@ body {
 }
 
 .price-history__row span {
-  color: #333
+  color: #333;
 }
 
 .price-history__row--up span {
