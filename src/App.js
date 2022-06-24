@@ -7,7 +7,7 @@ function App() {
   const { data, isLoading, isError, refetch} = useFetchHistory()
 
   return <div className='price-history__container'>
-    {isLoading ?  <div>Loading...</div> : isError ? <div>Something wrong happened. <button onClick={()=>refetch()}>Click here to refresh</button></div> : <table>
+    {isLoading ?  <div>Loading...</div> : isError ? <div className='price-history__alert'><span>Something wrong happened.</span><button onClick={()=>refetch()}>Click here to refresh</button></div> : <table>
       <tr>
         <th>Date</th>
         <th>Day of the week</th>
