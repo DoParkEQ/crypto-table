@@ -40,18 +40,15 @@ body {
   color: #fff;
 }
 
-.price-history__container tr {
-
-}
-
 .price-history__container th {
   text-align: center;
-  padding: 8px 0px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
 }
 
 .price-history__container td {
   text-align: center;
-  padding: 8px 0px;
+  padding-top: 16px;
 }
 
 .price-history__row span {
