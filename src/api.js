@@ -7,10 +7,11 @@ export const getList = async (id = 'joe', days = 7, currency = 'cad') => {
   for (let i = 0; i <= days; i++) {
     const historicalDate = new Date(currentDate
       .setDate(currentDate.getDate() - 1))
+    const formattedDate = historicalDate
       .toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })
       .replaceAll('/', '-')
     dates.push(historicalDate)
-    promises.push(fetch(`https://api.coingecko.com/api/v3/coins/${id}/history?date=${historicalDate}`))
+    promises.push(fetch(`https://api.coingecko.com/api/v3/coins/${id}/history?date=${formattedDate}`))
   }
 
   const res = await Promise.all(promises)
