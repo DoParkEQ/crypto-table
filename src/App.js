@@ -28,23 +28,25 @@ function App() {
     }
     fetchData()
   }, [])
-  console.log(data)
-  return  <table>
-  <tr>
-    <th>Date</th>
-    <th>Day of the week</th>
-    <th>1 JOE to CAD</th>
-    <th>24hr Changes</th>
-    <th>Change %</th>
-  </tr>
-    {data.map(({ price, date, changeInPercentage, changeInAmount }) => <tr>
-      <td>{formatDate(date, { year: 'numeric', month: 'long', day: '2-digit' })}</td>
-      <td>{formatDate(date, {weekday: 'long'})}</td>
-      <td>{formatPrice(price)}</td>
-      <td>{formatPrice(changeInAmount)}</td>
-      <td>{`${changeInPercentage.toFixed(1)}%`}</td>
-    </tr>)}
-</table>
+
+  return data && <div className='price-history__container'>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Day of the week</th>
+        <th>1 JOE to CAD</th>
+        <th>24hr Changes</th>
+        <th>Change %</th>
+      </tr>
+      {data.map(({ price, date, changeInPercentage, changeInAmount }) => <tr>
+        <td>{formatDate(date, { year: 'numeric', month: 'long', day: '2-digit' })}</td>
+        <td>{formatDate(date, {weekday: 'long'})}</td>
+        <td>{formatPrice(price)}</td>
+        <td className={`price-history__row${changeInAmount === 0 ? '' : changeInAmount > 0 ? '--up' : '--down'}`}><span>{formatPrice(changeInAmount)}</span></td>
+        <td className={`price-history__row${changeInAmount === 0 ? '' : changeInAmount > 0 ? '--up' : '--down'}`}><span>{`${changeInPercentage.toFixed(2)}%`}</span></td>
+      </tr>)}
+  </table>
+  </div>
 }
 
 export default App;
