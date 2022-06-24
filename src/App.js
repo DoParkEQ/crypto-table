@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { getList, getPrice } from './api';
+
+const URL = 'https://api.coingecko.com/api/v3/coins/joe/history?date=30-12-2017'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [data, setData] = useState()
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getList()
+        setData(data)
+        isLoading(false)
+      }
+      catch (e) {
+        setIsError(true)
+      }
+
+    }
+    fetchData()
+  }, [])
+
+  return <div></div>
 }
 
 export default App;
